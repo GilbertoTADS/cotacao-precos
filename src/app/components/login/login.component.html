@@ -1,0 +1,58 @@
+<form 
+  id="login" 
+  class="row" 
+  novalidate 
+  [formGroup]="authForm" 
+  (ngSubmit)="auth()"
+  >
+  <fieldset class="offset-1 col-10 border">
+    <legend >LOGIN</legend>
+    <div class="mb-3 row">
+      <label for="identifier" class="col-sm-2 col-form-label">IDENTIFIER</label>
+      <div class="col-sm-10">
+        <input 
+          type="number" 
+          class="form-control" 
+          id="identifier"
+          name="identifier" 
+          placeholder="CPF or CNPJ"
+          formControlName="identifier"
+          autofocus
+          autocomplete="off"
+          >
+          <small class="text-muted"> Type only numbers</small>
+          <small class="form-text text-success" *ngIf="authForm.get('identifier')!.valid && authForm.get('identifier')!.touched">Ok</small>
+          <small class="form-text text-danger" *ngIf="authForm.get('identifier')!.invalid && authForm.get('identifier')!.touched">Valor Inválido</small>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">PASSWORD</label>
+      <div class="col-sm-10">
+        <input 
+          type="password" 
+          class="form-control" 
+          id="password" 
+          placeholder="TYPE YOUR PASSWORD"
+          formControlName="password"
+          >
+          <small class="form-text text-success" *ngIf="authForm.get('password')!.valid && authForm.get('password')!.touched">Ok</small>
+          <small class="form-text text-danger" *ngIf="authForm.get('password')!.invalid && authForm.get('password')!.touched">Digite sua senha</small>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <div class="offset-6 col-6">
+        <button 
+          class="btn btn-primary btn-block" 
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+    <section class="row" *ngIf="authFailed">
+      <div class="col">
+        <p class="alert alert-danger text-center">USER OR PASSWORD UNKNOWN</p>
+      </div>
+    </section>
+  </fieldset>
+</form>

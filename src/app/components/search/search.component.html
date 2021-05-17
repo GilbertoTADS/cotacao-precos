@@ -1,0 +1,20 @@
+<form class="mb-3 row">
+  <div class="offset-1 col-8 pr-0">
+    <input 
+      #inputSearch
+      type="search"
+      class="form-control mr-0" 
+      id="search" 
+      name="search"
+      placeholder="what quote are you looking for?"
+      (keyup)="search(inputSearch.value)"
+      >
+  </div>
+  <label 
+    for="staticEmail" 
+    class="col-2 input-group-text bg-primary text-white"
+    (click)="search(inputSearch.value)"
+    >
+    <i-bs class="mx-auto" name="search"></i-bs>
+  </label>
+</form>
